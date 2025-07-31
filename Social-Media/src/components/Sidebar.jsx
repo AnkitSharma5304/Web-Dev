@@ -1,5 +1,7 @@
 
-const Sidebar = () => {
+const Sidebar = ({SelectedTab , setSelectedTab}) => {
+  const handleOnClick = (Tabname) => {
+    SelectedTab(Tabname);}
   return (
    <div
   className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
@@ -22,34 +24,34 @@ const Sidebar = () => {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
-          <a href="#" className="nav-link active" aria-current="page">
-            <svg
-              className="bi pe-none me-2"
-              width="16"
-              height="16"
-              aria-hidden="true"
-            >
-              <use xlinkHref="#home"></use>
-            </svg>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#" className="nav-link text-white">
-            <svg
-              className="bi pe-none me-2"
-              width="16"
-              height="16"
-              aria-hidden="true"
-            >
-              <use xlinkHref="#speedometer2"></use>
-            </svg>
-            Create-Post
-          </a>
-        </li>
-       
-      </ul>
+  <li className="nav-item" onClick={() => setSelectedTab("Home")}>
+    <a href="#" className={`nav-link ${SelectedTab === 'Home' ? 'active text-white bg-primary' : 'text-white'}`}>
+      <svg
+        className="bi pe-none me-2"
+        width="16"
+        height="16"
+        aria-hidden="true"
+      >
+        <use xlinkHref="#home"></use>
+      </svg>
+      Home
+    </a>
+  </li>
+  <li className="nav-item" onClick={() => setSelectedTab("CreatePost")}>
+    <a href="#" className={`nav-link ${SelectedTab === 'CreatePost' ? 'active text-white bg-primary' : 'text-white'}`}>
+      <svg
+        className="bi pe-none me-2"
+        width="16"
+        height="16"
+        aria-hidden="true"
+      >
+        <use xlinkHref="#speedometer2"></use>
+      </svg>
+      Create-Post
+    </a>
+  </li>
+</ul>
+
       <hr />
       <div className="dropdown">
         <a

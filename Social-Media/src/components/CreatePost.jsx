@@ -1,4 +1,4 @@
-const Post = () => {
+const CreatePost = () => {
   return (
     <>
       <div className="mb-3">
@@ -26,4 +26,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default CreatePost;
