@@ -1,28 +1,53 @@
 const CreatePost = () => {
   return (
-    <>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          Email address
+    <div className = "create-post"> 
+     <div className="mb-3">
+        <label htmlFor="user_id" className="form-label">
+        User_id
         </label>
         <input
-          type="email"
+          type="userId"
           className="form-control"
-          id="exampleFormControlInput1"
-          placeholder="name@example.com"
+          id="user_id"
+          placeholder="Enter your user ID"
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlTextarea1" className="form-label">
-          Example textarea
+        <label htmlFor="title" className="form-label">
+        Title
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="title"
+          placeholder="What's on your mind?"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="body" className="form-label">
+         Body
         </label>
         <textarea
           className="form-control"
-          id="exampleFormControlTextarea1"
+          id="body"
           rows="3"
+          placeholder="Your experience, thoughts, or ideas"
         ></textarea>
       </div>
-    </>
+       <div className="mb-3">
+        <label htmlFor="reactions" className="form-label">
+        Reactions
+        </label>
+        <input
+          type="reactions"
+          className="form-control"
+          id="reactions"
+          placeholder="How many people reacted to the post ?"
+        />
+      </div>
+
+      <button type="button" class="btn btn-primary">Submit</button>
+    </div>
   );
 };
 
