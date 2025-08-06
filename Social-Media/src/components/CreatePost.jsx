@@ -14,20 +14,27 @@ const CreatePost = () => {
        const postTitle = postTitleElement.current.value;    
         const postBody = postBodyElement.current.value;
         const Reactions = ReactionsElement.current.value;
-        const Tags = TagsElement.current.value.split(/(\s+)/);
+        const Tags = TagsElement.current.value.split(" ");
+
         addPost(userId, postTitle, postBody, Reactions, Tags); 
+
+        userIdElement.current.value = "";
+        postTitleElement.current.value = "";
+        postBodyElement.current.value = "";
+        ReactionsElement.current.value = "";
+        TagsElement.current.value = "";
    };
 
 
 
   return (
-    <div className = "create-post" onSubmit={handleSubmit}> 
+    <form className = "create-post" onSubmit={handleSubmit}> 
      <div className="mb-3">
         <label htmlFor="user_id" className="form-label">
         User_id
         </label>
         <input
-          type="userId"
+          type="text"
           ref={userIdElement}
           className="form-control"
           id="user_id"
@@ -79,13 +86,13 @@ const CreatePost = () => {
           type="text"
           ref={TagsElement}
           className="form-control"
-          id="reactions"
+          id="tags"
           placeholder="Enter tags related to the post"
         />
       </div>
 
       <button type="Submit" className="btn btn-primary">Post</button>
-    </div>
+    </form>
   );
 };
 
