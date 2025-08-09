@@ -4,6 +4,7 @@ import { useReducer } from "react";
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
+  addInitialPost: () => {},
   deletePost: () => {},
 });
 
@@ -15,6 +16,9 @@ const PostListReducer = (currPostlist, action) => {
       (post) => post.id !== action.payload.postid
     );
   }
+  else if (action.type === "ADD_INITIAL_POST") {
+    newPostList = action.payload.posts;
+  }
   else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currPostlist];
 
@@ -25,7 +29,7 @@ const PostListReducer = (currPostlist, action) => {
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(
     PostListReducer,
-    DEFAULT_POST_LIST
+    []
   );
 
   const addPost = (userId, postTitle, postBody, reactions, tags) => {
@@ -38,6 +42,14 @@ const PostListProvider = ({ children }) => {
         reactions: reactions,
         userId: userId,
         tags:tags,
+      },
+    });
+  };
+    const addInitialPost = (posts) => {
+    dispatchPostList({
+      type: "ADD_INITIAL_POST",
+      payload: {
+       posts,
       },
     });
   };
@@ -56,6 +68,7 @@ const PostListProvider = ({ children }) => {
       value={{
         postList,
         addPost,
+        addInitialPost,
         deletePost,
       }}
     >
@@ -63,23 +76,5 @@ const PostListProvider = ({ children }) => {
     </PostList.Provider>
   );
 };
-const DEFAULT_POST_LIST = [
-  {
-    id: "1",
-    title: "Going to Mumbai",
-    body: "Hello i m going to Mumbai for my vacations,it has a great weather and food , expecting a great time there.",
-    reactions: 56,
-    userId: "user_1",
-    tags: ["vacations ", " mumbai ", " travel "],
-  },
-  {
-    id: "2",
-    title: "Going to Delhi",
-    body: "Hello i m going to Delhi for my vacations , it is a great place to visit, especially in winters.",
-    reactions: 12,
-    userId: "user_2",
-    tags: ["vacations", "delhi", "travel"],
-  },
-];
 
 export default PostListProvider;

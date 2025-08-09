@@ -26,8 +26,11 @@ const Post = ({ post }) => {
             <span key={tag} className="badge text-bg-primary hashtag"> {tag} </span>
           ))}
           <div className="alert alert-primary reactions" role="alert">
-            This post has been reacted by <strong>{post.reactions}</strong> people
-          </div>
+  This post has been reacted to by
+  <strong> {post.reactions.likes} </strong> people who liked it and
+  <strong> {post.reactions.dislikes} </strong> people who disliked it.
+</div>
+
         </div>
       </div>
     </div>
